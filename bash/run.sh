@@ -1,0 +1,1 @@
+cd ~/aviVmw ; $(terraform output -json | jq -r .destroy_avi.value) ; sleep 5 ; terraform destroy -auto-approve -var-file=variables.json ; cd .. ; rm -fr aviVmw ; git clone https://github.com/tacobayle/aviVmw ; cd aviVmw ; terraform init ; terraform apply -auto-approve -var-file=variables.json
