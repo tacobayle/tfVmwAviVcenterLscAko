@@ -343,10 +343,6 @@
               "pool_ref": "pool2-vmw-avi",
               "services": [
                 {
-                  "port": 80,
-                  "enable_ssl": "false"
-                },
-                {
                   "port": 443,
                   "enable_ssl": "true"
                 }
