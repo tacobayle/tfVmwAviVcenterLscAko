@@ -58,6 +58,7 @@ data "template_file" "avi_vcenter_yaml_values" {
     network_vip = jsonencode(var.avi.config.vcenter.networks.network_vip)
     network_backend = jsonencode(var.avi.config.vcenter.networks.network_backend)
     service_engine_groups = jsonencode(var.avi.config.vcenter.serviceEngineGroup)
+    k8s_service_engine_groups = jsonencode(var.vmw.kubernetes.clusters[*].serviceEngineGroup)
     pools = jsonencode(var.avi.config.vcenter.pools)
     poolgroups = jsonencode(var.avi.config.vcenter.poolgroups)
     httppolicyset = jsonencode(var.avi.config.vcenter.httppolicyset)

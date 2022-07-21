@@ -31,6 +31,8 @@ vcenter:
       ${network_backend}
     service_engine_groups: |
       ${service_engine_groups}
+    k8s_service_engine_groups: |
+      ${k8s_service_engine_groups}
     pools: |
       ${pools}
     pool_groups: |

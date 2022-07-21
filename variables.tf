@@ -71,7 +71,7 @@ variable "ansible" {
     aviPbAbsentUrl = "https://github.com/tacobayle/ansibleAviClear"
     aviPbAbsentTag = "v1.03"
     aviConfigureUrl = "https://github.com/tacobayle/ansibleAviConfig"
-    aviConfigureTag = "v1.62"
+    aviConfigureTag = "v1.63"
     version = {
       ansible = "5.7.1"
       ansible-core = "2.12.5"
