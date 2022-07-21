@@ -7,6 +7,7 @@ controller:
   dns: |
     ${controller_dns}
   environment: vcenter
+  floating_ip : ${floating_ip}
   aviCredsJsonFile: ${aviCredsJsonFile}
 avi_password: ${avi_password}
 avi_old_password: ${avi_old_password}

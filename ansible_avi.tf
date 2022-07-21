@@ -41,6 +41,7 @@ data "template_file" "avi_vcenter_yaml_values" {
     controller_ips = jsonencode(vsphere_virtual_machine.controller[*].default_ip_address)
     controller_ntp = jsonencode(var.controller.ntp)
     controller_dns = jsonencode(var.controller.dns)
+    floating_ip = var.controller.floating_ip
     avi_password = var.avi_password
     aviCredsJsonFile = var.controller.aviCredsJsonFile
     avi_old_password = var.avi_old_password
