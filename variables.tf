@@ -36,7 +36,7 @@ variable "controller" {
     disk = 256
     cluster = true
     floating_ip = "10.41.134.130"
-    version = "21.1.4-9210"
+    version = "22.1.1-9052"
     wait_for_guest_net_timeout = 4
     private_key_path = "~/.ssh/cloudKey"
     dns =  ["10.23.108.1", "10.23.108.2"]
@@ -61,7 +61,7 @@ variable "jump" {
     private_key_path = "~/.ssh/cloudKey"
     wait_for_guest_net_timeout = 2
     template_name = "ubuntu-focal-20.04-cloudimg-template"
-    avisdkVersion = "21.1.4"
+    avisdkVersion = "22.1.1"
     username = "ubuntu"
   }
 }
@@ -71,7 +71,7 @@ variable "ansible" {
     aviPbAbsentUrl = "https://github.com/tacobayle/ansibleAviClear"
     aviPbAbsentTag = "v1.03"
     aviConfigureUrl = "https://github.com/tacobayle/ansibleAviConfig"
-    aviConfigureTag = "v1.63"
+    aviConfigureTag = "v1.64"
     version = {
       ansible = "5.7.1"
       ansible-core = "2.12.5"

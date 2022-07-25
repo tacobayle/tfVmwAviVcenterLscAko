@@ -52,6 +52,8 @@ data "template_file" "avi_vcenter_yaml_values" {
     vsphere_server = var.vsphere_server
     domains = jsonencode(var.avi.config.vcenter.domains)
     cloud_name = var.avi.config.vcenter.name
+    content_library_id = var.avi.config.vcenter.content_library.create == true ? vsphere_content_library.library[0].id : data.vsphere_content_library.library[0].id
+    content_library_name = var.avi.config.vcenter.content_library.name
     dc = var.vcenter.dc
     dhcp_enabled = var.avi.config.vcenter.dhcp_enabled
     network_management = jsonencode(var.avi.config.vcenter.networks.network_management)

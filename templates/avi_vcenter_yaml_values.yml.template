@@ -23,6 +23,9 @@ vcenter:
     name: ${cloud_name}
     dc: ${dc}
     dhcp_enabled: ${dhcp_enabled}
+    content_lib:
+      id: ${content_library_id}
+      name: ${content_library_name}
     network_management: |
       ${network_management}
     network_vip: |

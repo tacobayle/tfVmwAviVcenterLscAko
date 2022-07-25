@@ -79,6 +79,10 @@
       "vcenter": {
         "name": "dc1_vCenter",
         "dhcp_enabled": "true",
+        "content_library": {
+          "create": true,
+          "name": "NicTfVmwCl"
+        },
         "domains": [
           {
             "name": "vcenter.avi.com"
