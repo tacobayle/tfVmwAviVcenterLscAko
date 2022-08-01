@@ -1,7 +1,7 @@
 data "template_file" "values" {
   count = length(var.vmw.kubernetes.clusters)
   depends_on = [null_resource.ansible_bootstrap_cluster]
-  template = file("template/values.yml.template")
+  template = file("templates/values.yml.template")
   vars = {
     disableStaticRouteSync = var.vmw.kubernetes.clusters[count.index].ako.values.AKOSettings.disableStaticRouteSync
     clusterName  = var.vmw.kubernetes.clusters[count.index].name

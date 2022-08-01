@@ -122,7 +122,7 @@ resource "vsphere_virtual_machine" "master" {
 ////data "template_file" "ansible_hosts_master" {
 ////  depends_on = [null_resource.worker]
 ////  count            = length(var.vmw.kubernetes.clusters)
-////  template = file("template/hosts.template")
+////  template = file("templates/hosts.template")
 ////  vars = {
 ////    ip        = var.vmw.kubernetes.clusters[count.index].master.ip
 ////  }
@@ -131,7 +131,7 @@ resource "vsphere_virtual_machine" "master" {
 ////data "template_file" "ansible_hosts_workers" {
 ////  depends_on = [data.template_file.ansible_hosts_master]
 ////  count            = length(var.vmw.kubernetes.clusters)
-////  template = file("template/hosts.template")
+////  template = file("templates/hosts.template")
 ////  vars = {
 ////    ip        = var.vmw.kubernetes.clusters[count.index].master.ip
 ////  }
