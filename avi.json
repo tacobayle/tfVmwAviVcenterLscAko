@@ -426,8 +426,8 @@
             "lb_algorithm": "LB_ALGORITHM_ROUND_ROBIN",
             "default_server_port": 80,
             "avi_app_server_ips": [
-              "100.64.130.207",
-              "100.64.130.208"
+              "100.64.130.203",
+              "100.64.130.204"
             ]
           },
           {
@@ -437,8 +437,8 @@
             "lb_algorithm": "LB_ALGORITHM_ROUND_ROBIN",
             "default_server_port": 80,
             "avi_app_server_ips": [
-              "100.64.130.207",
-              "100.64.130.208"
+              "100.64.130.203",
+              "100.64.130.204"
             ]
           },
           {
@@ -448,8 +448,8 @@
             "lb_algorithm": "LB_ALGORITHM_ROUND_ROBIN",
             "default_server_port": 80,
             "avi_app_server_ips": [
-              "100.64.130.207",
-              "100.64.130.208"
+              "100.64.130.203",
+              "100.64.130.204"
             ]
           },
           {
@@ -459,8 +459,8 @@
             "lb_algorithm": "LB_ALGORITHM_ROUND_ROBIN",
             "default_server_port": 80,
             "avi_app_server_ips": [
-              "100.64.130.207",
-              "100.64.130.208"
+              "100.64.130.203",
+              "100.64.130.204"
             ]
           },
           {
@@ -470,8 +470,8 @@
             "lb_algorithm": "LB_ALGORITHM_ROUND_ROBIN",
             "default_server_port": 80,
             "avi_app_server_ips": [
-              "100.64.130.207",
-              "100.64.130.208"
+              "100.64.130.203",
+              "100.64.130.204"
             ]
           },
           {
@@ -481,8 +481,8 @@
             "lb_algorithm": "LB_ALGORITHM_ROUND_ROBIN",
             "default_server_port": 80,
             "avi_app_server_ips": [
-              "100.64.130.207",
-              "100.64.130.208"
+              "100.64.130.203",
+              "100.64.130.204"
             ]
           },
           {
@@ -492,8 +492,8 @@
             "lb_algorithm": "LB_ALGORITHM_ROUND_ROBIN",
             "default_server_port": 80,
             "avi_app_server_ips": [
-              "100.64.130.207",
-              "100.64.130.208"
+              "100.64.130.203",
+              "100.64.130.204"
             ]
           },
           {
@@ -503,8 +503,8 @@
             "lb_algorithm": "LB_ALGORITHM_ROUND_ROBIN",
             "default_server_port": 80,
             "avi_app_server_ips": [
-              "100.64.130.207",
-              "100.64.130.208"
+              "100.64.130.203",
+              "100.64.130.204"
             ]
           },
           {
@@ -514,8 +514,8 @@
             "lb_algorithm": "LB_ALGORITHM_ROUND_ROBIN",
             "default_server_port": 80,
             "avi_app_server_ips": [
-              "100.64.130.207",
-              "100.64.130.208"
+              "100.64.130.203",
+              "100.64.130.204"
             ]
           }
         ],
