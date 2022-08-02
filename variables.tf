@@ -69,9 +69,9 @@ variable "jump" {
 variable "ansible" {
   default = {
     aviPbAbsentUrl = "https://github.com/tacobayle/ansibleAviClear"
-    aviPbAbsentTag = "v1.03"
+    aviPbAbsentTag = "v1.04"
     aviConfigureUrl = "https://github.com/tacobayle/ansibleAviConfig"
-    aviConfigureTag = "v1.68"
+    aviConfigureTag = "v1.69"
     version = {
       ansible = "5.7.1"
       ansible-core = "2.12.5"
