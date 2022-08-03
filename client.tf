@@ -95,7 +95,7 @@ resource "null_resource" "traffic_gen1" {
   }
 }
 
-resource "null_resource" "traffic_gen_vcenter" {
+resource "null_resource" "traffic_gen_vcenter_1" {
   depends_on = [null_resource.traffic_gen1]
   count = length(var.avi.config.vcenter.virtual_services.http)
   provisioner "local-exec" {
@@ -103,8 +103,15 @@ resource "null_resource" "traffic_gen_vcenter" {
   }
 }
 
+resource "null_resource" "traffic_gen_vcenter_2" {
+  depends_on = [null_resource.traffic_gen_vcenter_1]
+  provisioner "local-exec" {
+    command = "echo 'for i in {1..30}; do curl -k https://${var.avi.config.vcenter.virtual_services.http[length(var.avi.config.vcenter.virtual_services.http)].name}.${var.avi.config.vcenter.domains[0].name}/wrongpath; sleep 0.5 ; done' | tee -a traffic_gen.sh"
+  }
+}
+
 resource "null_resource" "traffic_gen_lsc" {
-  depends_on = [null_resource.traffic_gen_vcenter]
+  depends_on = [null_resource.traffic_gen_vcenter_2]
   count      = length(var.avi.config.lsc.virtualservices.http)
 
   provisioner "local-exec" {

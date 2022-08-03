@@ -894,6 +894,20 @@
                   "enable_ssl": "true"
                 }
               ]
+            },
+            {
+              "name": "app-analytics",
+              "pool_ref": "pool1-vmw-hello",
+              "services": [
+                {
+                  "port": 80,
+                  "enable_ssl": "false"
+                },
+                {
+                  "port": 443,
+                  "enable_ssl": "true"
+                }
+              ]
             }
           ]
         }
