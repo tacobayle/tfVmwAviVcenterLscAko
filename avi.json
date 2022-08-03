@@ -120,6 +120,24 @@
               "type": "WRITE_ACCESS"
             }
           ]
+        },
+        {
+          "allow_unlabelled_access": true,
+          "name": "role-ops",
+          "privileges": [
+            {
+              "resource": "PERMISSION_VIRTUALSERVICE",
+              "type": "READ_ACCESS"
+            },
+            {
+              "resource": "PERMISSION_POOL",
+              "type": "READ_ACCESS"
+            },
+            {
+              "resource": "PERMISSION_POOLGROUP",
+              "type": "READ_ACCESS"
+            }
+          ]
         }
       ],
       "users": [
@@ -196,6 +214,31 @@
           "name": "orange",
           "is_superuser": false,
           "default_tenant_ref": "/api/tenant?name=dev-provider",
+          "user_profile_ref": "/api/useraccountprofile?name=Default-User-Account-Profile"
+        },
+        {
+          "access": [
+            {
+              "role_ref": "/api/role?name=role-ops",
+              "tenant_ref": "/api/tenant?name=dev-provider",
+              "all_tenants": false
+            },
+            {
+              "role_ref": "/api/role?name=role-ops",
+              "tenant_ref": "/api/tenant?name=preprod-provider",
+              "all_tenants": false
+            },
+            {
+              "role_ref": "/api/role?name=role-ops",
+              "tenant_ref": "/api/tenant?name=prod-dedicated_se",
+              "all_tenants": false
+            }
+
+          ],
+          "username": "ops",
+          "name": "ops",
+          "is_superuser": false,
+          "default_tenant_ref": "/api/tenant?name=prod-dedicated_se",
           "user_profile_ref": "/api/useraccountprofile?name=Default-User-Account-Profile"
         }
       ],
