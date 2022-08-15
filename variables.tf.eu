@@ -16,7 +16,7 @@ variable "vcenter" {
     cluster = "sof2-01-vc08c01"
     datastore = "sof2-01-vc08c01-vsan"
     resource_pool = "sof2-01-vc08c01/Resources"
-    folder = "NicTfVmw"
+    folder = "nicVmwDemo"
     networkMgmt = "vxw-dvs-34-virtualwire-3-sid-1080002-sof2-01-vc08-avi-mgmt"
   }
 }
@@ -207,7 +207,7 @@ variable "serviceEngineGroupLsc" {
       ]
       username = "ubuntu"
       templateName = "ubuntu-xenial-16.04-cloudimg-template"
-      folder = "NicTfVmw"
+      folder = "nicVmwDemo"
       public_key_path = "~/.ssh/cloudKey.pub"
       private_key_path = "~/.ssh/cloudKey"
   }
@@ -222,7 +222,7 @@ variable "serviceEngineGroup" {
       min_scaleout_per_vs = 2
       buffer_se = 1
       extra_shared_config_memory = 0
-      vcenter_folder = "NicTfVmw"
+      vcenter_folder = "nicVmwDemo"
       vcpus_per_se = 2
       memory_per_se = 4096
       disk_per_se = 25
@@ -238,7 +238,7 @@ variable "serviceEngineGroup" {
       min_scaleout_per_vs = 1
       buffer_se = 2
       extra_shared_config_memory = 0
-      vcenter_folder = "NicTfVmw"
+      vcenter_folder = "nicVmwDemo"
       vcpus_per_se = 1
       memory_per_se = 2048
       disk_per_se = 25
@@ -259,7 +259,7 @@ variable "serviceEngineGroup" {
       min_scaleout_per_vs = 1
       buffer_se = 0
       extra_shared_config_memory = 2000
-      vcenter_folder = "NicTfVmw"
+      vcenter_folder = "nicVmwDemo"
       vcpus_per_se = 2
       memory_per_se = 8192
       disk_per_se = 25
