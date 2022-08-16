@@ -654,6 +654,8 @@
                   "name": "Rule 1",
                   "index": 1,
                   "enable": true,
+                  "log": true,
+                  "all_headers": true,
                   "hdr_action": [
                     {
                       "action": "HTTP_REPLACE_HDR",
@@ -665,34 +667,20 @@
                         }
                       },
                       "hdr_index": 1
-                    }
-                  ]
-                },
-                {
-                  "name": "Rule 2",
-                  "index": 2,
-                  "enable": true,
-                  "hdr_action": [
+                    },
                     {
                       "action": "HTTP_REMOVE_HDR",
                       "hdr": {
                         "name": "X-MyHeader-ToBeDeleted"
                       },
                       "hdr_index": 2
-                    }
-                  ]
-                },
-                {
-                  "name": "Rule 3",
-                  "index": 3,
-                  "enable": true,
-                  "hdr_action": [
+                    },
                     {
                       "action": "HTTP_ADD_HDR",
                       "hdr": {
                         "name": "X-MyHeader-ToBeAdded",
                         "value": {
-                          "val": "Avi123",
+                          "val": "avi123",
                           "is_sensitive": false
                         }
                       },
@@ -726,7 +714,7 @@
           ],
           "http": [
             {
-              "name": "app-hello",
+              "name": "app-hello-world",
               "pool_ref": "pool1-vmw-hello",
               "services": [
                 {
@@ -790,7 +778,7 @@
               ]
             },
             {
-              "name": "app4-se-cpu-auto-scale",
+              "name": "app-se-cpu-auto-scale",
               "pool_ref": "pool1-vmw-hello",
               "services": [
                 {

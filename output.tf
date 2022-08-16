@@ -50,3 +50,7 @@ output "destroy_avi" {
 output "ako_install" {
   value = "helm --debug install ako/ako --generate-name --version ${var.vmw.kubernetes.clusters[0].ako.version} -f values.yml --namespace=${var.vmw.kubernetes.clusters[0].ako.namespace} --set avicredentials.username=admin --set avicredentials.password=$avi_password"
 }
+
+output "curl_header_command" {
+  value = "curl -k --header \"X-MyHeader-ToBeReplaced: avi\" --header \"X-MyHeader-ToBeDeleted: avi\" https://app-header.${var.avi.config.vcenter.domains[0].name}"
+}
