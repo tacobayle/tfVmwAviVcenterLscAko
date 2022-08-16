@@ -291,7 +291,7 @@
         "virtualservices": {
           "dns" : [
             {
-              "name": "app9-dns",
+              "name": "app-lsc-dns",
               "services" : [
                 {
                   "port": 53
@@ -301,7 +301,7 @@
           ],
           "http": [
             {
-              "name": "app8-lsc",
+              "name": "app-lsc",
               "pool_ref": "pool8-lsc",
               "services": [
                 {
@@ -645,12 +645,69 @@
               ]
             },
           "name": "http-request-policy-app3-content-switching-vmw"
+          },
+          {
+            "name": "http-request-header",
+            "http_request_policy" : {
+              "rules": [
+                {
+                  "name": "Rule 1",
+                  "index": 1,
+                  "enable": true,
+                  "hdr_action": [
+                    {
+                      "action": "HTTP_REPLACE_HDR",
+                      "hdr": {
+                        "name": "X-MyHeader-ToBeReplaced",
+                        "value": {
+                          "val": "NSX-ALB",
+                          "is_sensitive": false
+                        }
+                      },
+                      "hdr_index": 1
+                    }
+                  ]
+                },
+                {
+                  "name": "Rule 2",
+                  "index": 2,
+                  "enable": true,
+                  "hdr_action": [
+                    {
+                      "action": "HTTP_REMOVE_HDR",
+                      "hdr": {
+                        "name": "X-MyHeader-ToBeDeleted"
+                      },
+                      "hdr_index": 2
+                    }
+                  ]
+                },
+                {
+                  "name": "Rule 3",
+                  "index": 3,
+                  "enable": true,
+                  "hdr_action": [
+                    {
+                      "action": "HTTP_ADD_HDR",
+                      "hdr": {
+                        "name": "X-MyHeader-ToBeAdded",
+                        "value": {
+                          "val": "Avi123",
+                          "is_sensitive": false
+                        }
+                      },
+                      "hdr_index": 3
+                    }
+                  ]
+                }
+              ]
+            }
           }
         ],
         "virtual_services": {
           "dns" : [
             {
-              "name": "app6-dns",
+              "name": "app-vmw-dns",
               "services" : [
                 {
                   "port": 53
@@ -658,7 +715,7 @@
               ]
             },
             {
-            "name": "app7-gslb",
+            "name": "app-vmw-gslb",
             "services" : [
               {
                 "port": 53
@@ -669,7 +726,7 @@
           ],
           "http": [
             {
-              "name": "app1",
+              "name": "app-hello",
               "pool_ref": "pool1-vmw-hello",
               "services": [
                 {
@@ -683,7 +740,7 @@
               ]
             },
             {
-              "name": "app2",
+              "name": "app-avi",
               "pool_ref": "pool2-vmw-avi",
               "services": [
                 {
@@ -693,7 +750,27 @@
               ]
             },
             {
-              "name": "app3-cs",
+              "name": "app-header",
+              "pool_ref": "pool1-vmw-hello",
+              "http_policies" : [
+                {
+                  "http_policy_set_ref": "/api/httppolicyset?name=http-request-header",
+                  "index": 11
+                }
+              ],
+              "services": [
+                {
+                  "port": 80,
+                  "enable_ssl": "false"
+                },
+                {
+                  "port": 443,
+                  "enable_ssl": "true"
+                }
+              ]
+            },
+            {
+              "name": "app-cs",
               "pool_ref": "pool2-vmw-avi",
               "http_policies" : [
                 {
@@ -728,7 +805,7 @@
               "se_group_ref": "seGroupCpuAutoScale"
             },
             {
-              "name": "app5-waf",
+              "name": "app-waf",
               "pool_ref": "pool3-vmw-waf",
               "services": [
                 {
