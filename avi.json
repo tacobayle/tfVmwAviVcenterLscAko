@@ -680,7 +680,7 @@
                       "hdr": {
                         "name": "X-MyHeader-ToBeAdded",
                         "value": {
-                          "val": "avi123",
+                          "val": "avi",
                           "is_sensitive": false
                         }
                       },
