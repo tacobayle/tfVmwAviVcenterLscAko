@@ -52,5 +52,5 @@ output "ako_install" {
 }
 
 output "curl_header_command" {
-  value = "curl -k --header 'X-MyHeader-ToBeReplaced: avi123' --header 'X-MyHeader-ToBeDeleted: avi123' https://app-header.${var.avi.config.vcenter.domains[0].name}\n"
+  value = "curl -v -k --header 'X-MyHeader-ToBeReplaced: avi123' --header 'X-MyHeader-ToBeDeleted: avi123' https://app-header.${var.avi.config.vcenter.domains[0].name}\n"
 }
