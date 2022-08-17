@@ -689,6 +689,30 @@
                   ]
                 }
               ]
+            },
+            "http_response_policy": {
+              "rules": [
+                {
+                  "name": "Rule 1",
+                  "index": 1,
+                  "enable": true,
+                  "log": true,
+                  "all_headers": true,
+                  "hdr_action": [
+                    {
+                      "action": "HTTP_ADD_HDR",
+                      "hdr": {
+                        "name": "Content-Security-Policy",
+                        "value": {
+                          "val": "policy",
+                          "is_sensitive": false
+                        }
+                      },
+                      "hdr_index": 1
+                    }
+                  ]
+                }
+              ]
             }
           }
         ],
