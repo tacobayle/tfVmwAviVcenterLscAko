@@ -33,24 +33,24 @@ output "client" {
 }
 
 output "loadcommand" {
-  value = "while true ; do ab -n 50 -c 50 https://100.64.133.53/ ; done"
+  value = "while true ; do ab -n 50 -c 50 https://100.64.133.53/ ; done\n"
 }
 
 output "destroy" {
-  value = "ssh -o StrictHostKeyChecking=no -i ~/.ssh/${basename(var.jump.private_key_path)} -t ubuntu@${vsphere_virtual_machine.jump.default_ip_address} 'git clone ${var.ansible.aviPbAbsentUrl} --branch ${var.ansible.aviPbAbsentTag} ; cd ${split("/", var.ansible.aviPbAbsentUrl)[4]} ; ansible-playbook local.yml --extra-vars @${var.controller.aviCredsJsonFile}' ; sleep 5 ; terraform destroy -auto-approve -var-file=avi.json"
+  value = "ssh -o StrictHostKeyChecking=no -i ~/.ssh/${basename(var.jump.private_key_path)} -t ubuntu@${vsphere_virtual_machine.jump.default_ip_address} 'git clone ${var.ansible.aviPbAbsentUrl} --branch ${var.ansible.aviPbAbsentTag} ; cd ${split("/", var.ansible.aviPbAbsentUrl)[4]} ; ansible-playbook local.yml --extra-vars @${var.controller.aviCredsJsonFile}' ; sleep 5 ; terraform destroy -auto-approve -var-file=avi.json\n"
   description = "command to destroy the infra"
 }
 
 output "destroy_avi" {
-  value = "ssh -o StrictHostKeyChecking=no -i ~/.ssh/${basename(var.jump.private_key_path)} -t ubuntu@${vsphere_virtual_machine.jump.default_ip_address} 'git clone ${var.ansible.aviPbAbsentUrl} --branch ${var.ansible.aviPbAbsentTag} ; cd ${split("/", var.ansible.aviPbAbsentUrl)[4]} ; ansible-playbook local.yml --extra-vars @${var.controller.aviCredsJsonFile}'"
-  description = "command to destroy the infra"
+  value = "ssh -o StrictHostKeyChecking=no -i ~/.ssh/${basename(var.jump.private_key_path)} -t ubuntu@${vsphere_virtual_machine.jump.default_ip_address} 'git clone ${var.ansible.aviPbAbsentUrl} --branch ${var.ansible.aviPbAbsentTag} ; cd ${split("/", var.ansible.aviPbAbsentUrl)[4]} ; ansible-playbook local.yml --extra-vars @${var.controller.aviCredsJsonFile}'\n"
+  description = "command to clear Avi only"
 }
 
 
 output "ako_install" {
-  value = "helm --debug install ako/ako --generate-name --version ${var.vmw.kubernetes.clusters[0].ako.version} -f values.yml --namespace=${var.vmw.kubernetes.clusters[0].ako.namespace} --set avicredentials.username=admin --set avicredentials.password=$avi_password"
+  value = "helm --debug install ako/ako --generate-name --version ${var.vmw.kubernetes.clusters[0].ako.version} -f values.yml --namespace=${var.vmw.kubernetes.clusters[0].ako.namespace} --set avicredentials.username=admin --set avicredentials.password=$avi_password\n"
 }
 
 output "curl_header_command" {
-  value = "curl -k --header \"X-MyHeader-ToBeReplaced: avi\" --header \"X-MyHeader-ToBeDeleted: avi\" https://app-header.${var.avi.config.vcenter.domains[0].name}"
+  value = "curl -k --header 'X-MyHeader-ToBeReplaced: avi123' --header 'X-MyHeader-ToBeDeleted: avi123' https://app-header.${var.avi.config.vcenter.domains[0].name}\n"
 }
