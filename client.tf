@@ -89,6 +89,14 @@ resource "vsphere_virtual_machine" "client" {
   }
 }
 
+resource "null_resource" "clear_ssh_key_clients" {
+  count = var.client.count
+  provisioner "local-exec" {
+    command = "ssh-keygen -f \"/home/ubuntu/.ssh/known_hosts\" -R \"${vsphere_virtual_machine.client[count.index].default_ip_address}\" || true"
+  }
+}
+
+
 resource "null_resource" "traffic_gen1" {
   provisioner "local-exec" {
     command = "echo '#!/bin/bash' | tee traffic_gen.sh"

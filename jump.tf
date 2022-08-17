@@ -92,3 +92,9 @@ resource "vsphere_virtual_machine" "jump" {
     ]
   }
 }
+
+resource "null_resource" "clear_ssh_key_jump" {
+  provisioner "local-exec" {
+    command = "ssh-keygen -f \"/home/ubuntu/.ssh/known_hosts\" -R \"${vsphere_virtual_machine.jump.default_ip_address}\" || true"
+  }
+}

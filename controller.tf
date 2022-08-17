@@ -49,11 +49,17 @@ resource "vsphere_virtual_machine" "controller" {
   }
 }
 
-resource "null_resource" "wait_https_controller" {
+resource "null_resource" "wait_https_controllers" {
   depends_on = [vsphere_virtual_machine.controller]
-  count            = 1
-
+  count            = (var.controller.cluster == true ? 3 : 1)
   provisioner "local-exec" {
     command = "until $(curl --output /dev/null --silent --head -k https://${vsphere_virtual_machine.controller[count.index].default_ip_address}); do echo 'Waiting for Avi Controller to be ready'; sleep 10 ; done"
+  }
+}
+
+resource "null_resource" "clear_ssh_key_controllers" {
+  count            = (var.controller.cluster == true ? 3 : 1)
+  provisioner "local-exec" {
+    command = "ssh-keygen -f \"/home/ubuntu/.ssh/known_hosts\" -R \"${vsphere_virtual_machine.controller[count.index].default_ip_address}\" || true"
   }
 }

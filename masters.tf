@@ -94,6 +94,14 @@ resource "vsphere_virtual_machine" "master" {
     ]
   }
 }
+
+resource "null_resource" "clear_ssh_key_masters" {
+  count = length(var.vmw.kubernetes.clusters)
+  provisioner "local-exec" {
+    command = "ssh-keygen -f \"/home/ubuntu/.ssh/known_hosts\" -R \"${vsphere_virtual_machine.master[count.index].default_ip_address}\" || true"
+  }
+}
+
 //
 //
 //

@@ -91,7 +91,7 @@ data "template_file" "avi_lsc_yaml_values" {
 }
 
 resource "null_resource" "ansible_avi" {
-  depends_on = [null_resource.wait_https_controller, vsphere_virtual_machine.jump, vsphere_virtual_machine.master, vsphere_virtual_machine.worker, null_resource.ansible_hosts_avi_header_3, data.template_file.avi_vcenter_yaml_values, data.template_file.avi_lsc_yaml_values]
+  depends_on = [null_resource.wait_https_controllers, vsphere_virtual_machine.jump, vsphere_virtual_machine.master, vsphere_virtual_machine.worker, null_resource.ansible_hosts_avi_header_3, data.template_file.avi_vcenter_yaml_values, data.template_file.avi_lsc_yaml_values]
   connection {
     host = vsphere_virtual_machine.jump.default_ip_address
     type = "ssh"
