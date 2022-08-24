@@ -44,7 +44,7 @@ data "template_file" "ako_boutique_hostrule" {
   template = file("templates/ako_boutique_hostrule.yml.template")
   vars = {
     index_cluster = count.index + 1
-    domain = var.avi.config.vcenter.domains[0].
+    domain = var.avi.config.vcenter.domains[0].name
     applicationProfile = "http_rate_limit_request_per_cookie"
   }
 }
