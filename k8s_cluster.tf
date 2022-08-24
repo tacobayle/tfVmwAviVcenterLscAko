@@ -69,17 +69,17 @@ resource "null_resource" "ako_prerequisites" {
   }
 
   provisioner "file" {
-    source = data.template_file.ako_boutique_cluster_ip[count.index].rendered
+    content = data.template_file.ako_boutique_cluster_ip[count.index].rendered
     destination = "ako_boutique_cluster_ip.yml"
   }
 
   provisioner "file" {
-    source = data.template_file.ako_boutique_ingress[count.index].rendered
+    content = data.template_file.ako_boutique_ingress[count.index].rendered
     destination = "ako_boutique_ingress.yml"
   }
 
   provisioner "file" {
-    source = data.template_file.ako_boutique_hostrule[count.index].rendered
+    content = data.template_file.ako_boutique_hostrule[count.index].rendered
     destination = "ako_boutique_hostrule.yml"
   }
 
