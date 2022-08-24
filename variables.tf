@@ -71,7 +71,7 @@ variable "ansible" {
     aviPbAbsentUrl = "https://github.com/tacobayle/ansibleAviClear"
     aviPbAbsentTag = "v1.04"
     aviConfigureUrl = "https://github.com/tacobayle/ansibleAviConfig"
-    aviConfigureTag = "v1.74"
+    aviConfigureTag = "v1.75"
     version = {
       ansible = "5.7.1"
       ansible-core = "2.12.5"
@@ -131,7 +131,7 @@ variable "backend_lsc" {
 variable "client" {
   default = {
     cpu = 2
-    count = 2
+    count = 3
     memory = 4096
     disk = 20
     username = "ubuntu"
@@ -139,7 +139,7 @@ variable "client" {
     wait_for_guest_net_timeout = 2
     template_name = "ubuntu-bionic-18.04-cloudimg-template"
     netplanFile = "/etc/netplan/50-cloud-init.yaml"
-    ipsData = ["100.64.131.11", "100.64.131.12"]
+    ipsData = ["100.64.131.11", "100.64.131.12", "100.64.131.13"]
     maskData = "/24"
   }
 }

@@ -48,5 +48,7 @@ vcenter:
       ${poolgroups}
     httppolicyset: |
       ${httppolicyset}
+    applicationprofile: |
+      ${applicationprofile}
     virtual_services: |
       ${virtual_services}

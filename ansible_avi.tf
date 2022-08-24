@@ -67,6 +67,7 @@ data "template_file" "avi_vcenter_yaml_values" {
     pools = jsonencode(var.avi.config.vcenter.pools)
     poolgroups = jsonencode(var.avi.config.vcenter.poolgroups)
     httppolicyset = jsonencode(var.avi.config.vcenter.httppolicyset)
+    applicationprofile = jsonencode(var.avi.config.vcenter.applicationprofile)
     virtual_services = jsonencode(var.avi.config.vcenter.virtual_services)
   }
 }

@@ -32,8 +32,20 @@ output "client" {
   value = vsphere_virtual_machine.client.*.default_ip_address
 }
 
-output "loadcommand" {
+output "load_command" {
   value = "while true ; do ab -n 50 -c 50 https://100.64.133.53/ ; done\n"
+}
+
+output "dos_command" {
+  value = "requests=\"40\" ; concurrent=\"40\"; while true ; do echo \"sent    : $requests requests\" ; responses=$(ab -v 3 -n $requests -c $concurrent http://app-security.${var.avi.config.vcenter.domains[0].name}/ 2> /dev/null | grep \"LOG: Response code = 200\" | wc -l); echo \"received: $responses successful responses\" ; echo \"---\" ; sleep 1 ; done\n"
+}
+
+output "ddos_command_with_cookie" {
+  value = "requests=\"40\" ; concurrent=\"40\"; while true ; do echo \"sent    : $requests requests\" ; responses=$(ab -v 3 -n $requests -C shop_session-id=15cdd4fe-c97e-42b8-b037-de0b197e490a -c $concurrent http://boutique.${var.avi.config.vcenter.domains[0].name}/ 2> /dev/null | grep \"LOG: Response code = 200\" | wc -l); echo \"received: $responses successful responses\" ; echo \"---\" ; sleep 1 ; done\n"
+}
+
+output "ddos_command_without_cookie" {
+  value = "requests=\"40\" ; concurrent=\"40\"; while true ; do echo \"sent    : $requests requests\" ; responses=$(ab -v 3 -n $requests -c $concurrent http://boutique.${var.avi.config.vcenter.domains[0].name}/ 2> /dev/null | grep \"LOG: Response code = 200\" | wc -l); echo \"received: $responses successful responses\" ; echo \"---\" ; sleep 1 ; done\n"
 }
 
 output "destroy" {
@@ -52,5 +64,10 @@ output "ako_install" {
 }
 
 output "curl_header_command" {
-  value = "curl -v -k --header 'X-MyHeader-ToBeReplaced: avi123' --header 'X-MyHeader-ToBeDeleted: avi123' https://app-header.${var.avi.config.vcenter.domains[0].name}\n"
+  value = "curl -v -k --header 'X-MyHeader-ToBeReplaced: avi123' --header 'X-MyHeader-ToBeDeleted: avi123' https://app-security.${var.avi.config.vcenter.domains[0].name}\n"
+}
+
+output "install_boutique_app" {
+  value = "git clone https://github.com/GoogleCloudPlatform/microservices-demo.git \ncd microservices-demo\nkubectl apply -f ./release/kubernetes-manifests.yaml"
+  description = "commands to install boutique GCP app"
 }

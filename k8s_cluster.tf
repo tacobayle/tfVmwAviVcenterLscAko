@@ -18,6 +18,37 @@ data "template_file" "values" {
   }
 }
 
+data "template_file" "ako_boutique_cluster_ip" {
+  count = length(var.vmw.kubernetes.clusters)
+  template = file("templates/ako_boutique_cluster-ip.yml.template")
+  vars = {
+    app = "frontend"
+    name = "cluster-ip"
+    port = "80"
+    targetPort = "8080"
+  }
+}
+
+data "template_file" "ako_boutique_ingress" {
+  count = length(var.vmw.kubernetes.clusters)
+  template = file("templates/ako_boutique_ingress.yml.template")
+  vars = {
+    index_cluster = count.index + 1
+    domain = var.avi.config.vcenter.domains[0].name
+    service_name = "cluster-ip"
+  }
+}
+
+data "template_file" "ako_boutique_hostrule" {
+  count = length(var.vmw.kubernetes.clusters)
+  template = file("templates/ako_boutique_hostrule.yml.template")
+  vars = {
+    index_cluster = count.index + 1
+    domain = var.avi.config.vcenter.domains[0].
+    applicationProfile = "http_rate_limit_request_per_cookie"
+  }
+}
+
 resource "null_resource" "ako_prerequisites" {
   count = length(var.vmw.kubernetes.clusters)
   connection {
@@ -35,6 +66,21 @@ resource "null_resource" "ako_prerequisites" {
   provisioner "file" {
     source = "values-cluster-${count.index}"
     destination = "values.yml"
+  }
+
+  provisioner "file" {
+    source = data.template_file.ako_boutique_cluster_ip[count.index].rendered
+    destination = "ako_boutique_cluster_ip.yml"
+  }
+
+  provisioner "file" {
+    source = data.template_file.ako_boutique_ingress[count.index].rendered
+    destination = "ako_boutique_ingress.yml"
+  }
+
+  provisioner "file" {
+    source = data.template_file.ako_boutique_hostrule[count.index].rendered
+    destination = "ako_boutique_hostrule.yml"
   }
 
   provisioner "remote-exec" {

@@ -577,6 +577,123 @@
             ]
           }
         ],
+        "applicationprofile" : [
+          {
+            "name": "http_rate_limit_request_from_client",
+            "type": "APPLICATION_PROFILE_TYPE_HTTP",
+            "http_profile": {
+              "allow_dots_in_header_name": false,
+              "client_body_timeout": 30000,
+              "client_header_timeout": 10000,
+              "client_max_body_size": 0,
+              "client_max_header_size": 12,
+              "client_max_request_size": 48,
+              "collect_client_tls_fingerprint": false,
+              "connection_multiplexing_enabled": true,
+              "detect_ntlm_app": true,
+              "disable_keepalive_posts_msie6": true,
+              "disable_sni_hostname_check": false,
+              "enable_chunk_merge": true,
+              "enable_fire_and_forget": false,
+              "enable_request_body_buffering": false,
+              "enable_request_body_metrics": false,
+              "fwd_close_hdr_for_bound_connections": true,
+              "hsts_enabled": false,
+              "hsts_max_age": 365,
+              "hsts_subdomains_enabled": true,
+              "http2_profile": {
+                "enable_http2_server_push": false,
+                "http2_initial_window_size": 64,
+                "max_http2_concurrent_pushes_per_connection": 10,
+                "max_http2_concurrent_streams_per_connection": 128,
+                "max_http2_control_frames_per_connection": 1000,
+                "max_http2_empty_data_frames_per_connection": 1000,
+                "max_http2_header_field_size": 4096,
+                "max_http2_queued_frames_to_client_per_connection": 1000,
+                "max_http2_requests_per_connection": 1000
+              }
+            },
+            "dos_rl_profile": {
+              "dos_profile": {
+                "thresh_period": 5
+              },
+              "rl_profile": {
+                "client_ip_requests_rate_limit": {
+                  "action": {
+                    "status_code": "HTTP_LOCAL_RESPONSE_STATUS_CODE_429",
+                    "type": "RL_ACTION_CLOSE_CONN"
+                  },
+                  "explicit_tracking": false,
+                  "fine_grain": false,
+                  "rate_limiter": {
+                    "burst_sz": 0,
+                    "count": 10,
+                    "period": 1
+                  }
+                }
+              }
+            }
+          },
+          {
+            "name": "http_rate_limit_request_per_cookie",
+            "type": "APPLICATION_PROFILE_TYPE_HTTP",
+            "http_profile": {
+              "allow_dots_in_header_name": false,
+              "client_body_timeout": 30000,
+              "client_header_timeout": 10000,
+              "client_max_body_size": 0,
+              "client_max_header_size": 12,
+              "client_max_request_size": 48,
+              "collect_client_tls_fingerprint": false,
+              "connection_multiplexing_enabled": true,
+              "detect_ntlm_app": true,
+              "disable_keepalive_posts_msie6": true,
+              "disable_sni_hostname_check": false,
+              "enable_chunk_merge": true,
+              "enable_fire_and_forget": false,
+              "enable_request_body_buffering": false,
+              "enable_request_body_metrics": false,
+              "fwd_close_hdr_for_bound_connections": true,
+              "hsts_enabled": false,
+              "hsts_max_age": 365,
+              "hsts_subdomains_enabled": true,
+              "http2_profile": {
+                "enable_http2_server_push": false,
+                "http2_initial_window_size": 64,
+                "max_http2_concurrent_pushes_per_connection": 10,
+                "max_http2_concurrent_streams_per_connection": 128,
+                "max_http2_control_frames_per_connection": 1000,
+                "max_http2_empty_data_frames_per_connection": 1000,
+                "max_http2_header_field_size": 4096,
+                "max_http2_queued_frames_to_client_per_connection": 1000,
+                "max_http2_requests_per_connection": 1000
+              }
+            },
+            "dos_rl_profile": {
+              "dos_profile": {
+                "thresh_period": 5
+              },
+              "rl_profile": {
+                "http_header_rate_limits": [
+                  {
+                    "action": {
+                      "status_code": "HTTP_LOCAL_RESPONSE_STATUS_CODE_429",
+                      "type": "RL_ACTION_CLOSE_CONN"
+                    },
+                    "explicit_tracking": false,
+                    "fine_grain": false,
+                    "http_cookie": "shop_session-id",
+                    "rate_limiter": {
+                      "burst_sz": 0,
+                      "count": 20,
+                      "period": 1
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ],
         "httppolicyset": [
           {
             "http_request_policy": {
@@ -762,8 +879,9 @@
               ]
             },
             {
-              "name": "app-header",
+              "name": "app-security",
               "pool_ref": "pool1-vmw-hello",
+              "application_profile_ref": "System-HTTP",
               "http_policies" : [
                 {
                   "http_policy_set_ref": "/api/httppolicyset?name=http-request-header",
@@ -782,7 +900,7 @@
               ]
             },
             {
-              "name": "app-cs",
+              "name": "app-content-switching",
               "pool_ref": "pool2-vmw-avi",
               "http_policies" : [
                 {
