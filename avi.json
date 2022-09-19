@@ -262,7 +262,7 @@
           "name": "Default-Group",
           "vcpus_per_se": 1,
           "kernel_version": "4.4.0-72-generic",
-          "memory_per_se": 4096,
+          "memory_per_se": 2048,
           "disk_per_se": 25,
           "SE_INBAND_MGMT": "False",
           "DPDK": "Yes",
