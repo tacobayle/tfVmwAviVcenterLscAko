@@ -41,7 +41,7 @@ output "dos_command" {
 }
 
 output "ddos_command_with_cookie" {
-  value = "requests=\"40\" ; concurrent=\"40\"; while true ; do echo \"sent    : $requests requests\" ; responses=$(ab -v 3 -n $requests -C shop_session-id=15cdd4fe-c97e-42b8-b037-de0b197e490a -c $concurrent http://boutique.${var.avi.config.vcenter.domains[0].name}/ 2> /dev/null | grep \"LOG: Response code = 200\" | wc -l); echo \"received: $responses successful responses\" ; echo \"---\" ; sleep 1 ; done\n"
+  value = "requests=\"100\" ; while true ; do rm results.txt ; echo \"sending $requests requests\" ; for i in $(seq 1 $requests) ; do  curl --cookie \"shop_session-id=15cdd4fe-c97e-42b8-b037-de0b197e490a\" -k https://boutique2.vcenter.avi.com -w \"%%{http_code}\\n\" -o /dev/null -s | tee -a results.txt >/dev/null ; done ; echo \"received $(cat results.txt | grep 200 | wc -l) successful responses\"; echo \"---\"; done\n"
 }
 
 output "ddos_command_without_cookie" {
