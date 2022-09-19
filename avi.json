@@ -318,7 +318,7 @@
         }
       },
       "vcenter": {
-        "name": "dc1_vCenter",
+        "name": "Default-Cloud",
         "dhcp_enabled": "true",
         "content_library": {
           "create": true,
@@ -376,7 +376,7 @@
                 "enabled": true
               },
             "vcenter_folder": "nicVmwDemo",
-            "vcpus_per_se": 2
+            "vcpus_per_se": 1
           },
           {
             "auto_rebalance": true,
@@ -415,7 +415,7 @@
                 "enabled": true
               },
             "vcenter_folder": "nicVmwDemo",
-            "vcpus_per_se": 2
+            "vcpus_per_se": 1
           }
         ],
         "pools": [

@@ -71,7 +71,7 @@ variable "ansible" {
     aviPbAbsentUrl = "https://github.com/tacobayle/ansibleAviClear"
     aviPbAbsentTag = "v1.04"
     aviConfigureUrl = "https://github.com/tacobayle/ansibleAviConfig"
-    aviConfigureTag = "v1.75"
+    aviConfigureTag = "v1.76"
     version = {
       ansible = "5.7.1"
       ansible-core = "2.12.5"
@@ -178,7 +178,7 @@ variable "vmw" {
           ]
           ako = {
             namespace = "avi-system"
-            version = "1.7.1"
+            version = "1.7.2"
             helm = {
               url = "https://projects.registry.vmware.com/chartrepo/ako"
             }
@@ -247,7 +247,7 @@ variable "vmw" {
           ]
           ako = {
             namespace = "avi-system"
-            version = "1.7.1"
+            version = "1.7.2"
             helm = {
               url = "https://projects.registry.vmware.com/chartrepo/ako"
             }
@@ -327,7 +327,7 @@ variable "vmw" {
           ]
           ako = {
             namespace = "avi-system"
-            version = "1.7.1"
+            version = "1.7.2"
             helm = {
               url = "https://projects.registry.vmware.com/chartrepo/ako"
             }

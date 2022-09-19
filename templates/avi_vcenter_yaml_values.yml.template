@@ -18,6 +18,8 @@ vsphere_password: ${vsphere_password}
 vsphere_server: ${vsphere_server}
 tenants: |
   ${tenants}
+k8s_tenants: |
+  ${k8s_tenants}
 roles: |
   ${roles}
 users: |

@@ -15,6 +15,7 @@ data "template_file" "values" {
     controllerVersion = split("-", var.controller.version)[0]
     cloudName = var.avi.config.vcenter.name
     controllerHost = vsphere_virtual_machine.controller[0].default_ip_address
+    tenantName = var.vmw.kubernetes.clusters[count.index].name
   }
 }
 

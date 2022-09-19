@@ -51,6 +51,7 @@ data "template_file" "avi_vcenter_yaml_values" {
     vsphere_password = var.vsphere_password
     vsphere_server = var.vsphere_server
     tenants = jsonencode(var.avi.config.tenants)
+    k8s_tenants = jsonencode(var.vmw.kubernetes.clusters)
     roles = jsonencode(var.avi.config.roles)
     users = jsonencode(var.avi.config.users)
     domains = jsonencode(var.avi.config.vcenter.domains)
