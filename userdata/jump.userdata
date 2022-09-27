@@ -27,6 +27,7 @@ write_files:
       host_key_checking = False
       host_key_auto_add = True
       EOT
+      git clone https://github.com/tacobayle/ansibleAviAclVs
       echo "cloud init done" | tee /tmp/cloudInitDone.log
     path: /opt/bootstrap.sh
     permissions: 0755
