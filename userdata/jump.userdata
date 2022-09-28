@@ -28,6 +28,8 @@ write_files:
       host_key_auto_add = True
       EOT
       git clone https://github.com/tacobayle/ansibleAviAclVs
+      git clone https://github.com/tacobayle/ansibleAviVsIpamDns
+      git clone https://github.com/tacobayle/tfAviVsIpamDns
       echo "cloud init done" | tee /tmp/cloudInitDone.log
     path: /opt/bootstrap.sh
     permissions: 0755
