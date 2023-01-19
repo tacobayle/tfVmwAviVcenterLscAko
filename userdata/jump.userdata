@@ -17,7 +17,7 @@ write_files:
       pip3 install ansible-core==${ansible_core_version}
       pip3 install ansible==${ansible_version}
       pip3 install avisdk==${avisdkVersion}
-      sudo -u ubuntu ansible-galaxy collection install vmware.alb
+      sudo -u ${username} ansible-galaxy collection install vmware.alb
       pip3 install dnspython
       pip3 install netaddr
       sudo mkdir -p /etc/ansible
@@ -30,9 +30,9 @@ write_files:
       sudo curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
       sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
       sudo apt-get update && sudo apt-get install terraform
-      git clone https://github.com/tacobayle/ansibleAviAclVs
-      git clone https://github.com/tacobayle/ansibleAviVsIpamDns
-      git clone https://github.com/tacobayle/tfAviVsIpamDns
+      sudo -u ${username} git clone https://github.com/tacobayle/ansibleAviAclVs /home/${username}/ansibleAviAclVs
+      sudo -u ${username} git clone https://github.com/tacobayle/ansibleAviVsIpamDns /home/${username}/ansibleAviVsIpamDns
+      sudo -u ${username} git clone https://github.com/tacobayle/tfAviVsIpamDns /home/${username}/tfAviVsIpamDns
       echo "cloud init done" | tee /tmp/cloudInitDone.log
     path: /opt/bootstrap.sh
     permissions: 0755
