@@ -24,7 +24,7 @@ variable "vcenter" {
     cluster = "sof2-01-vc08c01"
     datastore = "sof2-01-vc08c01-vsan"
     resource_pool = "sof2-01-vc08c01/Resources"
-    folder = "nicVmwDemo"
+    folder = "nic-vmw-demo"
     networkMgmt = "vxw-dvs-34-virtualwire-3-sid-1080002-sof2-01-vc08-avi-mgmt"
   }
 }
@@ -197,7 +197,7 @@ variable "vmw" {
             ha_mode = "HA_MODE_SHARED"
             min_scaleout_per_vs = "2"
             buffer_se = 1
-            vcenter_folder = "nicVmwDemo"
+            vcenter_folder = "nic-vmw-demo"
           }
           networks = {
             pod = "192.168.0.0/16"
@@ -268,7 +268,7 @@ variable "vmw" {
             buffer_se = 1
             max_vs_per_se = "20"
             extra_shared_config_memory = 0
-            vcenter_folder = "nicVmwDemo"
+            vcenter_folder = "nic-vmw-demo"
             vcpus_per_se = 2
             memory_per_se = 4096
             disk_per_se = 25
@@ -346,7 +346,7 @@ variable "vmw" {
             ha_mode = "HA_MODE_SHARED"
             min_scaleout_per_vs = "2"
             buffer_se = 1
-            vcenter_folder = "nicVmwDemo"
+            vcenter_folder = "nic-vmw-demo"
           }
           networks = {
             pod = "10.244.0.0/16"

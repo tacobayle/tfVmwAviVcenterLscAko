@@ -16,7 +16,7 @@ variable "vcenter" {
     cluster = "wdc-06-vc12c01"
     datastore = "wdc-06-vc12c01-vsan"
     resource_pool = "wdc-06-vc12c01/Resources"
-    folder = "nicVmwDemo"
+    folder = "nic-vmw-demo"
     networkMgmt = "vxw-dvs-34-virtualwire-3-sid-6120002-wdc-06-vc12-avi-mgmt"
   }
 }
@@ -188,7 +188,7 @@ variable "serviceEngineGroup" {
       min_scaleout_per_vs = 2
       buffer_se = 1
       extra_shared_config_memory = 0
-      vcenter_folder = "nicVmwDemo"
+      vcenter_folder = "nic-vmw-demo"
       vcpus_per_se = 2
       memory_per_se = 4096
       disk_per_se = 25
@@ -204,7 +204,7 @@ variable "serviceEngineGroup" {
       min_scaleout_per_vs = 1
       buffer_se = 2
       extra_shared_config_memory = 0
-      vcenter_folder = "nicVmwDemo"
+      vcenter_folder = "nic-vmw-demo"
       vcpus_per_se = 1
       memory_per_se = 2048
       disk_per_se = 25
@@ -225,7 +225,7 @@ variable "serviceEngineGroup" {
       min_scaleout_per_vs = 1
       buffer_se = 0
       extra_shared_config_memory = 2000
-      vcenter_folder = "nicVmwDemo"
+      vcenter_folder = "nic-vmw-demo"
       vcpus_per_se = 2
       memory_per_se = 8192
       disk_per_se = 25

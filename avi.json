@@ -375,7 +375,7 @@
                 "duration": 0,
                 "enabled": true
               },
-            "vcenter_folder": "nicVmwDemo",
+            "vcenter_folder": "nic-vmw-demo",
             "vcpus_per_se": 1
           },
           {
@@ -398,7 +398,7 @@
                 "duration": 0,
                 "enabled": true
               },
-            "vcenter_folder": "nicVmwDemo",
+            "vcenter_folder": "nic-vmw-demo",
             "vcpus_per_se": 1
           },
           {
@@ -414,7 +414,7 @@
                 "duration": 0,
                 "enabled": true
               },
-            "vcenter_folder": "nicVmwDemo",
+            "vcenter_folder": "nic-vmw-demo",
             "vcpus_per_se": 1
           }
         ],
