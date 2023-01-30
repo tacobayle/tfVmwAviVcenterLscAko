@@ -3,7 +3,7 @@
     "config": {
       "tenants": [
         {
-          "name": "dev-provider",
+          "name": "dev",
           "local": true,
           "config_settings" : {
             "tenant_vrf": false,
@@ -12,7 +12,7 @@
           }
         },
         {
-          "name": "preprod-provider",
+          "name": "preprod",
           "local": true,
           "config_settings" : {
             "tenant_vrf": false,
@@ -21,7 +21,7 @@
           }
         },
         {
-          "name": "prod-dedicated_se",
+          "name": "prod",
           "local": true,
           "config_settings" : {
             "tenant_vrf": false,
@@ -145,17 +145,17 @@
           "access": [
             {
               "role_ref": "/api/role?name=role-blue",
-              "tenant_ref": "/api/tenant?name=dev-provider",
+              "tenant_ref": "/api/tenant?name=dev",
               "all_tenants": false
             },
             {
               "role_ref": "/api/role?name=role-blue",
-              "tenant_ref": "/api/tenant?name=preprod-provider",
+              "tenant_ref": "/api/tenant?name=preprod",
               "all_tenants": false
             },
             {
               "role_ref": "/api/role?name=role-blue",
-              "tenant_ref": "/api/tenant?name=prod-dedicated_se",
+              "tenant_ref": "/api/tenant?name=prod",
               "all_tenants": false
             }
 
@@ -163,24 +163,24 @@
           "username": "blue",
           "name": "blue",
           "is_superuser": false,
-          "default_tenant_ref": "/api/tenant?name=dev-provider",
+          "default_tenant_ref": "/api/tenant?name=dev",
           "user_profile_ref": "/api/useraccountprofile?name=Default-User-Account-Profile"
         },
         {
           "access": [
             {
               "role_ref": "/api/role?name=role-green",
-              "tenant_ref": "/api/tenant?name=dev-provider",
+              "tenant_ref": "/api/tenant?name=dev",
               "all_tenants": false
             },
             {
               "role_ref": "/api/role?name=role-green",
-              "tenant_ref": "/api/tenant?name=preprod-provider",
+              "tenant_ref": "/api/tenant?name=preprod",
               "all_tenants": false
             },
             {
               "role_ref": "/api/role?name=role-green",
-              "tenant_ref": "/api/tenant?name=prod-dedicated_se",
+              "tenant_ref": "/api/tenant?name=prod",
               "all_tenants": false
             }
 
@@ -188,24 +188,24 @@
           "username": "green",
           "name": "green",
           "is_superuser": false,
-          "default_tenant_ref": "/api/tenant?name=dev-provider",
+          "default_tenant_ref": "/api/tenant?name=dev",
           "user_profile_ref": "/api/useraccountprofile?name=Default-User-Account-Profile"
         },
         {
           "access": [
             {
               "role_ref": "/api/role?name=role-orange",
-              "tenant_ref": "/api/tenant?name=dev-provider",
+              "tenant_ref": "/api/tenant?name=dev",
               "all_tenants": false
             },
             {
               "role_ref": "/api/role?name=role-orange",
-              "tenant_ref": "/api/tenant?name=preprod-provider",
+              "tenant_ref": "/api/tenant?name=preprod",
               "all_tenants": false
             },
             {
               "role_ref": "/api/role?name=role-orange",
-              "tenant_ref": "/api/tenant?name=prod-dedicated_se",
+              "tenant_ref": "/api/tenant?name=prod",
               "all_tenants": false
             }
 
@@ -213,24 +213,24 @@
           "username": "orange",
           "name": "orange",
           "is_superuser": false,
-          "default_tenant_ref": "/api/tenant?name=dev-provider",
+          "default_tenant_ref": "/api/tenant?name=dev",
           "user_profile_ref": "/api/useraccountprofile?name=Default-User-Account-Profile"
         },
         {
           "access": [
             {
               "role_ref": "/api/role?name=role-ops",
-              "tenant_ref": "/api/tenant?name=dev-provider",
+              "tenant_ref": "/api/tenant?name=dev",
               "all_tenants": false
             },
             {
               "role_ref": "/api/role?name=role-ops",
-              "tenant_ref": "/api/tenant?name=preprod-provider",
+              "tenant_ref": "/api/tenant?name=preprod",
               "all_tenants": false
             },
             {
               "role_ref": "/api/role?name=role-ops",
-              "tenant_ref": "/api/tenant?name=prod-dedicated_se",
+              "tenant_ref": "/api/tenant?name=prod",
               "all_tenants": false
             }
 
@@ -238,7 +238,7 @@
           "username": "ops",
           "name": "ops",
           "is_superuser": false,
-          "default_tenant_ref": "/api/tenant?name=prod-dedicated_se",
+          "default_tenant_ref": "/api/tenant?name=prod",
           "user_profile_ref": "/api/useraccountprofile?name=Default-User-Account-Profile"
         }
       ],
@@ -464,7 +464,7 @@
           },
           {
             "name": "blue-dev-Pool",
-            "tenant_ref": "dev-provider",
+            "tenant_ref": "dev",
             "markers": [{"key": "app", "values": ["blue"]}],
             "lb_algorithm": "LB_ALGORITHM_ROUND_ROBIN",
             "default_server_port": 80,
@@ -475,7 +475,7 @@
           },
           {
             "name": "blue-preprod-Pool",
-            "tenant_ref": "preprod-provider",
+            "tenant_ref": "preprod",
             "markers": [{"key": "app", "values": ["blue"]}],
             "lb_algorithm": "LB_ALGORITHM_ROUND_ROBIN",
             "default_server_port": 80,
@@ -486,7 +486,7 @@
           },
           {
             "name": "blue-prod-Pool",
-            "tenant_ref": "prod-dedicated_se",
+            "tenant_ref": "prod",
             "markers": [{"key": "app", "values": ["blue"]}],
             "lb_algorithm": "LB_ALGORITHM_ROUND_ROBIN",
             "default_server_port": 80,
@@ -497,7 +497,7 @@
           },
           {
             "name": "orange-dev-Pool",
-            "tenant_ref": "dev-provider",
+            "tenant_ref": "dev",
             "markers": [{"key": "app", "values": ["orange"]}],
             "lb_algorithm": "LB_ALGORITHM_ROUND_ROBIN",
             "default_server_port": 80,
@@ -508,7 +508,7 @@
           },
           {
             "name": "orange-preprod-Pool",
-            "tenant_ref": "preprod-provider",
+            "tenant_ref": "preprod",
             "markers": [{"key": "app", "values": ["orange"]}],
             "lb_algorithm": "LB_ALGORITHM_ROUND_ROBIN",
             "default_server_port": 80,
@@ -519,7 +519,7 @@
           },
           {
             "name": "orange-prod-Pool",
-            "tenant_ref": "prod-dedicated_se",
+            "tenant_ref": "prod",
             "markers": [{"key": "app", "values": ["orange"]}],
             "lb_algorithm": "LB_ALGORITHM_ROUND_ROBIN",
             "default_server_port": 80,
@@ -530,7 +530,7 @@
           },
           {
             "name": "green-dev-Pool",
-            "tenant_ref": "dev-provider",
+            "tenant_ref": "dev",
             "markers": [{"key": "app", "values": ["green"]}],
             "lb_algorithm": "LB_ALGORITHM_ROUND_ROBIN",
             "default_server_port": 80,
@@ -541,7 +541,7 @@
           },
           {
             "name": "green-preprod-Pool",
-            "tenant_ref": "preprod-provider",
+            "tenant_ref": "preprod",
             "markers": [{"key": "app", "values": ["green"]}],
             "lb_algorithm": "LB_ALGORITHM_ROUND_ROBIN",
             "default_server_port": 80,
@@ -552,7 +552,7 @@
           },
           {
             "name": "green-prod-Pool",
-            "tenant_ref": "prod-dedicated_se",
+            "tenant_ref": "prod",
             "markers": [{"key": "app", "values": ["green"]}],
             "lb_algorithm": "LB_ALGORITHM_ROUND_ROBIN",
             "default_server_port": 80,
@@ -961,7 +961,7 @@
             {
               "name": "blue-dev",
               "pool_ref": "blue-dev-Pool",
-              "tenant_ref": "dev-provider",
+              "tenant_ref": "dev",
               "markers": [{"key": "app", "values": ["blue"]}],
               "services": [
                 {
@@ -977,7 +977,7 @@
             {
               "name": "blue-preprod",
               "pool_ref": "blue-preprod-Pool",
-              "tenant_ref": "preprod-provider",
+              "tenant_ref": "preprod",
               "markers": [{"key": "app", "values": ["blue"]}],
               "services": [
                 {
@@ -993,7 +993,7 @@
             {
               "name": "blue-prod",
               "pool_ref": "blue-prod-Pool",
-              "tenant_ref": "prod-dedicated_se",
+              "tenant_ref": "prod",
               "markers": [{"key": "app", "values": ["blue"]}],
               "services": [
                 {
@@ -1009,7 +1009,7 @@
             {
               "name": "green-dev",
               "pool_ref": "green-dev-Pool",
-              "tenant_ref": "dev-provider",
+              "tenant_ref": "dev",
               "markers": [{"key": "app", "values": ["green"]}],
               "services": [
                 {
@@ -1025,7 +1025,7 @@
             {
               "name": "green-preprod",
               "pool_ref": "green-preprod-Pool",
-              "tenant_ref": "preprod-provider",
+              "tenant_ref": "preprod",
               "markers": [{"key": "app", "values": ["green"]}],
               "services": [
                 {
@@ -1041,7 +1041,7 @@
             {
               "name": "green-prod",
               "pool_ref": "green-prod-Pool",
-              "tenant_ref": "prod-dedicated_se",
+              "tenant_ref": "prod",
               "markers": [{"key": "app", "values": ["green"]}],
               "services": [
                 {
@@ -1057,7 +1057,7 @@
             {
               "name": "orange-dev",
               "pool_ref": "orange-dev-Pool",
-              "tenant_ref": "dev-provider",
+              "tenant_ref": "dev",
               "markers": [{"key": "app", "values": ["orange"]}],
               "services": [
                 {
@@ -1073,7 +1073,7 @@
             {
               "name": "orange-preprod",
               "pool_ref": "orange-preprod-Pool",
-              "tenant_ref": "preprod-provider",
+              "tenant_ref": "preprod",
               "markers": [{"key": "app", "values": ["orange"]}],
               "services": [
                 {
@@ -1089,7 +1089,7 @@
             {
               "name": "orange-prod",
               "pool_ref": "orange-prod-Pool",
-              "tenant_ref": "prod-dedicated_se",
+              "tenant_ref": "prod",
               "markers": [{"key": "app", "values": ["orange"]}],
               "services": [
                 {
