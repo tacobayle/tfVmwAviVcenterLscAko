@@ -77,7 +77,7 @@ variable "ansible" {
       ansible-core = "2.12.5"
     }
     k8sInstallUrl = "https://github.com/tacobayle/ansibleK8sInstall"
-    k8sInstallTag = "v1.6"
+    k8sInstallTag = "v1.66"
   }
 }
 
@@ -207,7 +207,8 @@ variable "vmw" {
           }
           interface = "ens224" # interface used by k8s
           cni = {
-            url = "https://docs.projectcalico.org/manifests/calico.yaml"
+            url = "https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/tigera-operator.yaml"
+            url_crd = "https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/custom-resources.yaml -O"
             name = "calico" # calico or antrea
           }
           master = {
