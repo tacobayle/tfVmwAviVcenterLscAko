@@ -48,6 +48,8 @@ write_files:
       #
       wget ${cniUrl} -O cni.yml
       for image in $(cat cni.yml | grep 'image: ' | awk -F 'image: ' '{print $2}'); do docker pull $image ; done
+      docker pull docker.io/calico/pod2daemon-flexvol:v3.25.0
+      docker pull docker.io/calico/typha:v3.25.0
       #
       # argo-cd image download
       #
