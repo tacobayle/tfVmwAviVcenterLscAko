@@ -49,8 +49,8 @@ write_files:
       docker pull docker.io/calico/pod2daemon-flexvol:v3.25.0
       docker pull docker.io/calico/typha:v3.25.0
       docker pull docker.io/calico/cni:v3.25.0
-      docker.io/calico/kube-controllers:v3.25.0
-      docker.io/calico/csi:v3.25.0
+      docker pull docker.io/calico/kube-controllers:v3.25.0
+      docker pull docker.io/calico/csi:v3.25.0
       #
       # argo-cd image download
       #
