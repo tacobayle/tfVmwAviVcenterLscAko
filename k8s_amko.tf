@@ -83,8 +83,8 @@ resource "null_resource" "copy_k8s_config_amko_to_masters" {
 
   provisioner "remote-exec" {
     inline = [
-      "scp -i ${var.jump.private_key_path} -o StrictHostKeyChecking=no /home/ubuntu/amko/gslb-members ubuntu@${vsphere_virtual_machine.master.default_ip_address}:/home/ubuntu/amko/gslb-members",
-      "scp -i ${var.jump.private_key_path} -o StrictHostKeyChecking=no /home/ubuntu/amko/values_amko${count.index}.yml ubuntu@${vsphere_virtual_machine.master.default_ip_address}:/home/ubuntu/amko/values_amko.yml"
+      "scp -i ${var.jump.private_key_path} -o StrictHostKeyChecking=no /home/ubuntu/amko/gslb-members ubuntu@${vsphere_virtual_machine.master[count.index].default_ip_address}:/home/ubuntu/amko/gslb-members",
+      "scp -i ${var.jump.private_key_path} -o StrictHostKeyChecking=no /home/ubuntu/amko/values_amko${count.index}.yml ubuntu@${vsphere_virtual_machine.master[count.index].default_ip_address}:/home/ubuntu/amko/values_amko.yml"
     ]
   }
 }
