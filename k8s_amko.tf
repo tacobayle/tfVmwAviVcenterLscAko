@@ -117,7 +117,7 @@ resource "null_resource" "amko_prerequisites" {
   }
 }
 
-resource "null_resource" "amko_prerequisites" {
+resource "null_resource" "install_amko" {
   depends_on = [null_resource.amko_prerequisites]
   count = (var.vmw.kubernetes.amko.deploy == true ? length(var.vmw.kubernetes.clusters) : 0)
   connection {
