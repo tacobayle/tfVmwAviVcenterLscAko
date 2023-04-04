@@ -14,8 +14,8 @@ for cluster in $(seq 1 ${cluster})
 #for cluster in $(seq 1 2)
 do
   # clusters
-  cluster_certificate_authority_data=$(yq -c -r '.clusters[0].cluster."certificate-authority-data"' config$cluster)
-  cluster_server=$(yq -c -r '.clusters[0].cluster.server' config$cluster)
+  cluster_certificate_authority_data=$(yq -c -r '.clusters[0].cluster."certificate-authority-data"' /home/ubuntu/amko/config$cluster)
+  cluster_server=$(yq -c -r '.clusters[0].cluster.server' /home/ubuntu/amko/config$cluster)
   name=cluster$cluster
   gslb_members_json=$(echo $gslb_members_json | jq '.clusters += [{"cluster": {"certificate-authority-data": "'$(echo $cluster_certificate_authority_data)'", "server": "'$(echo $cluster_server)'"}, "name": "'$(echo $name)'"}]')
   # contexts
@@ -25,8 +25,8 @@ do
   gslb_members_json=$(echo $gslb_members_json | jq '.contexts += [{"context": {"cluster": "'$(echo $context_cluster)'", "user": "'$(echo $context_user)'"}, "name": "'$(echo $name)'"}]')
   # users
   name=user-$cluster
-  user_client_certificate_data=$(yq -c -r '.users[0].user."client-certificate-data"' config$cluster)
-  user_client_key_data=$(yq -c -r '.users[0].user."client-key-data"' config$cluster)
+  user_client_certificate_data=$(yq -c -r '.users[0].user."client-certificate-data"' /home/ubuntu/amko/config$cluster)
+  user_client_key_data=$(yq -c -r '.users[0].user."client-key-data"' /home/ubuntu/amko/config$cluster)
   gslb_members_json=$(echo $gslb_members_json | jq '.users += [{"user": {"client-certificate-data": "'$(echo $user_client_certificate_data)'", "client-key-data": "'$(echo $user_client_key_data)'"}, "name": "'$(echo $name)'"}]')
 done
 echo $gslb_members_json | yq -y . | tee $localFile > /dev/null
