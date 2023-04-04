@@ -315,76 +315,76 @@ variable "vmw" {
             netplanFile = "/etc/netplan/50-cloud-init.yaml"
           }
         },
-        {
-          name = "cluster3"
-          netplanApply = true
-          username = "ubuntu"
-          version = "1.21.3-00"
-          namespaces = [
-            {
-              name= "ns1"
-            },
-            {
-              name= "ns2"
-            },
-            {
-              name= "ns3"
-            },
-          ]
-          ako = {
-            namespace = "avi-system"
-            version = "1.7.2"
-            helm = {
-              url = "https://projects.registry.vmware.com/chartrepo/ako"
-            }
-            values = {
-              AKOSettings = {
-                disableStaticRouteSync = "false"
-              }
-              L7Settings = {
-                serviceType = "ClusterIP"
-                shardVSSize = "SMALL"
-              }
-            }
-          }
-          serviceEngineGroup = {
-            name = "seg-cluster3"
-            ha_mode = "HA_MODE_SHARED"
-            min_scaleout_per_vs = "2"
-            buffer_se = 1
-            vcenter_folder = "nic-vmw-demo"
-          }
-          networks = {
-            pod = "10.244.0.0/16"
-          }
-          docker = {
-            version = "5:20.10.7~3-0~ubuntu-bionic"
-          }
-          interface = "ens224"
-          cni = {
-            url = "https://github.com/coreos/flannel/raw/master/Documentation/kube-flannel.yml"
-            name = "flannel"
-          }
-          master = {
-            count = 1
-            cpu = 8
-            memory = 16384
-            disk = 80
-            network = "vxw-dvs-34-virtualwire-124-sid-1080123-sof2-01-vc08-avi-dev120"
-            wait_for_guest_net_routable = "false"
-            template_name = "ubuntu-bionic-18.04-cloudimg-template"
-            netplanFile = "/etc/netplan/50-cloud-init.yaml"
-          }
-          worker = {
-            cpu = 4
-            memory = 8192
-            disk = 40
-            network = "vxw-dvs-34-virtualwire-124-sid-1080123-sof2-01-vc08-avi-dev120"
-            wait_for_guest_net_routable = "false"
-            template_name = "ubuntu-bionic-18.04-cloudimg-template"
-            netplanFile = "/etc/netplan/50-cloud-init.yaml"
-          }
-        },
+#        {
+#          name = "cluster3"
+#          netplanApply = true
+#          username = "ubuntu"
+#          version = "1.21.3-00"
+#          namespaces = [
+#            {
+#              name= "ns1"
+#            },
+#            {
+#              name= "ns2"
+#            },
+#            {
+#              name= "ns3"
+#            },
+#          ]
+#          ako = {
+#            namespace = "avi-system"
+#            version = "1.7.2"
+#            helm = {
+#              url = "https://projects.registry.vmware.com/chartrepo/ako"
+#            }
+#            values = {
+#              AKOSettings = {
+#                disableStaticRouteSync = "false"
+#              }
+#              L7Settings = {
+#                serviceType = "ClusterIP"
+#                shardVSSize = "SMALL"
+#              }
+#            }
+#          }
+#          serviceEngineGroup = {
+#            name = "seg-cluster3"
+#            ha_mode = "HA_MODE_SHARED"
+#            min_scaleout_per_vs = "2"
+#            buffer_se = 1
+#            vcenter_folder = "nic-vmw-demo"
+#          }
+#          networks = {
+#            pod = "10.244.0.0/16"
+#          }
+#          docker = {
+#            version = "5:20.10.7~3-0~ubuntu-bionic"
+#          }
+#          interface = "ens224"
+#          cni = {
+#            url = "https://github.com/coreos/flannel/raw/master/Documentation/kube-flannel.yml"
+#            name = "flannel"
+#          }
+#          master = {
+#            count = 1
+#            cpu = 8
+#            memory = 16384
+#            disk = 80
+#            network = "vxw-dvs-34-virtualwire-124-sid-1080123-sof2-01-vc08-avi-dev120"
+#            wait_for_guest_net_routable = "false"
+#            template_name = "ubuntu-bionic-18.04-cloudimg-template"
+#            netplanFile = "/etc/netplan/50-cloud-init.yaml"
+#          }
+#          worker = {
+#            cpu = 4
+#            memory = 8192
+#            disk = 40
+#            network = "vxw-dvs-34-virtualwire-124-sid-1080123-sof2-01-vc08-avi-dev120"
+#            wait_for_guest_net_routable = "false"
+#            template_name = "ubuntu-bionic-18.04-cloudimg-template"
+#            netplanFile = "/etc/netplan/50-cloud-init.yaml"
+#          }
+#        },
       ]
     }
   }
