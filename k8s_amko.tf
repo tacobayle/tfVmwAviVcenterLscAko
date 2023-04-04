@@ -113,7 +113,7 @@ resource "null_resource" "amko_prerequisites" {
 
   provisioner "remote-exec" {
     inline = [
-      "kubectl create secret generic gslb-config-secret --from-file gslb-members -n avi-system"
+      "kubectl create secret generic gslb-config-secret --from-file /home/ubuntu/amko/gslb-members -n avi-system"
     ]
   }
 }
