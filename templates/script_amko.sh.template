@@ -99,5 +99,5 @@ do
   # .federatorLogFile
   values_amko=$(echo $values_amko | jq '. += {"federatorLogFile": "amko-federator.log"}')
   #
-  echo $values_amko | yq -y . | tee values_amko$cluster.yml > /dev/null
+  echo $values_amko | yq -y . | tee /home/ubuntu/amko/values_amko$cluster.yml > /dev/null
 done
