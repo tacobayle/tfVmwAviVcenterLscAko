@@ -153,6 +153,11 @@ variable "vmw" {
       ako = {
         deploy = false
       }
+      amko = {
+        app_selector = "gslb"
+        version = "1.7.1"
+        deploy = false
+      }
       argocd = {
         status = false
         manifest_url = "https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml"

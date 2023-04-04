@@ -91,6 +91,13 @@ resource "vsphere_virtual_machine" "jump" {
       "chmod 600 ~/.ssh/${basename(var.jump.private_key_path)}"
     ]
   }
+
+    provisioner "remote-exec" {
+      inline = [
+        "mkdir amko"
+      ]
+  }
+
 }
 
 resource "null_resource" "clear_ssh_key_jump" {

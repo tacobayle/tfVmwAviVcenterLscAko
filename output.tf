@@ -63,6 +63,10 @@ output "ako_install" {
   value = "helm --debug install ako/ako --generate-name --version ${var.vmw.kubernetes.clusters[0].ako.version} -f values.yml --namespace=${var.vmw.kubernetes.clusters[0].ako.namespace} --set avicredentials.username=admin --set avicredentials.password=$avi_password\n"
 }
 
+output "amko_install" {
+  value = "helm install  ako/amko  --generate-name --version ${var.vmw.kubernetes.amko.version} -f /home/ubuntu/amko/values_amko.yml  --namespace=avi-system\n"
+}
+
 output "curl_header_command" {
   value = "curl -v -k --header 'X-MyHeader-ToBeReplaced: avi123' --header 'X-MyHeader-ToBeDeleted: avi123' https://app-security.${var.avi.config.vcenter.domains[0].name}\n"
 }

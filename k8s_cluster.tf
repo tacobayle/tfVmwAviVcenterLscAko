@@ -19,6 +19,24 @@ data "template_file" "values" {
   }
 }
 
+data "template_file" "ingress" {
+  count      = length(var.vmw.kubernetes.clusters)
+  template = file("templates/ingress.yml.template")
+  vars = {
+    domain = var.avi.config.vcenter.domains.0.name
+    cluster = count.index + 1
+  }
+}
+
+data "template_file" "crd" {
+  count      = length(var.vmw.kubernetes.clusters)
+  template = file("templates/crd.yml.template")
+  vars = {
+    domain = var.avi.config.vcenter.domains.0.name
+    cluster = count.index + 1
+  }
+}
+
 data "template_file" "ako_boutique_cluster_ip" {
   count = length(var.vmw.kubernetes.clusters)
   template = file("templates/ako_boutique_cluster-ip.yml.template")
@@ -65,6 +83,26 @@ resource "null_resource" "ako_prerequisites" {
   }
 
   provisioner "file" {
+    source = "templates/deployments.yml"
+    destination = "deployments.yml"
+  }
+
+  provisioner "file" {
+    source = "templates/svcs_lb.yml"
+    destination = "svcs_lb.yml"
+  }
+
+  provisioner "file" {
+    content = data.template_file.ingress[count.index].rendered
+    destination = "/home/ubuntu/ingress.yml"
+  }
+
+  provisioner "file" {
+    content = data.template_file.crd[count.index].rendered
+    destination = "/home/ubuntu/crd.yml"
+  }
+
+  provisioner "file" {
     source = "values-cluster-${count.index}"
     destination = "values.yml"
   }
@@ -86,6 +124,7 @@ resource "null_resource" "ako_prerequisites" {
 
   provisioner "remote-exec" {
     inline = [
+      "mkdir amko",
       "echo \"avi_password=${var.avi_password}\" | sudo tee -a /home/ubuntu/.profile",
       "echo \"alias k=kubectl\" | sudo tee -a /home/ubuntu/.profile",
       "helm repo add ako ${var.vmw.kubernetes.clusters[count.index].ako.helm.url}",
