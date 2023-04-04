@@ -24,6 +24,7 @@ data "template_file" "script_amko" {
     controller_version = split("-", var.controller.version)[0]
     cluster = length(var.vmw.kubernetes.clusters)
     avi_password = var.avi_password
+    avi_version = split("-", var.controller.version)[0]
     app_selector = var.vmw.kubernetes.amko.app_selector
   }
 }
