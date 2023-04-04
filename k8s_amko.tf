@@ -11,7 +11,7 @@ resource "null_resource" "copy_k8s_config_file_to_jump" {
 
   provisioner "remote-exec" {
     inline = [
-      "scp -i ${var.jump.private_key_path} -o StrictHostKeyChecking=no ubuntu@${vsphere_virtual_machine.master.default_ip_address}:/home/ubuntu/.kube/config /home/ubuntu/amko/config${count.index}"
+      "scp -i ${var.jump.private_key_path} -o StrictHostKeyChecking=no ubuntu@${vsphere_virtual_machine.master[count.index].default_ip_address}:/home/ubuntu/.kube/config /home/ubuntu/amko/config${count.index}"
     ]
   }
 }
