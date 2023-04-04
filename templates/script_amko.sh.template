@@ -20,11 +20,11 @@ do
   gslb_members_json=$(echo $gslb_members_json | jq '.clusters += [{"cluster": {"certificate-authority-data": "'$(echo $cluster_certificate_authority_data)'", "server": "'$(echo $cluster_server)'"}, "name": "'$(echo $name)'"}]')
   # contexts
   context_cluster=cluster$cluster
-  context_user=user-$cluster
+  context_user=user$cluster
   name=context$cluster
   gslb_members_json=$(echo $gslb_members_json | jq '.contexts += [{"context": {"cluster": "'$(echo $context_cluster)'", "user": "'$(echo $context_user)'"}, "name": "'$(echo $name)'"}]')
   # users
-  name=user-$cluster
+  name=user$cluster
   user_client_certificate_data=$(yq -c -r '.users[0].user."client-certificate-data"' /home/ubuntu/amko/config$cluster)
   user_client_key_data=$(yq -c -r '.users[0].user."client-key-data"' /home/ubuntu/amko/config$cluster)
   gslb_members_json=$(echo $gslb_members_json | jq '.users += [{"user": {"client-certificate-data": "'$(echo $user_client_certificate_data)'", "client-key-data": "'$(echo $user_client_key_data)'"}, "name": "'$(echo $name)'"}]')
@@ -61,7 +61,7 @@ do
   #for memberClusters in $(seq 1 ${cluster})
   for memberClusters in $(seq 1 2)
   do
-    values_amko=$(echo $values_amko | jq '.configs.memberClusters += [ "context'$memberClusters'"]')
+    values_amko=$(echo $values_amko | jq '.configs.memberClusters += [ {"clusterContext": "context'$memberClusters'"}]')
   done
   values_amko=$(echo $values_amko | jq '.configs += {"refreshInterval": 1800}')
   values_amko=$(echo $values_amko | jq '.configs += {"logLevel": "INFO"}')
@@ -77,7 +77,7 @@ do
   values_amko=$(echo $values_amko | jq '.globalDeploymentPolicy += {"matchClusters": []}')
   for matchClusters in $(seq 1 2)
   do
-    values_amko=$(echo $values_amko | jq '.globalDeploymentPolicy.matchClusters += [ "context'$matchClusters'"]')
+    values_amko=$(echo $values_amko | jq '.globalDeploymentPolicy.matchClusters += [ {"cluster": "context'$matchClusters'"}]')
   done
   # .serviceAccount
   values_amko=$(echo $values_amko | jq '. += {"serviceAccount": {"create": true}}')

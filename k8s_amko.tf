@@ -34,6 +34,7 @@ data "template_file" "crd_gslb" {
   template = file("templates/crd_gslb.yml.template")
   vars = {
     domain = var.avi.config.vcenter.domains.0.name
+    gslb_domain = var.vmw.kubernetes.amko.gslb_domain
     cluster = count.index + 1
   }
 }

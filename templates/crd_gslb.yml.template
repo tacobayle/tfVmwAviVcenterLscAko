@@ -13,5 +13,5 @@ spec:
         name: System-Default-Cert-EC
         type: ref
     gslb:
-      fqdn: ingress.${domain}
+      fqdn: ingress.${gslb_domain}
       includeAliases: false
