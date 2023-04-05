@@ -66,7 +66,7 @@ do
   values_amko=$(echo $values_amko | jq '.configs += {"refreshInterval": 1800}')
   values_amko=$(echo $values_amko | jq '.configs += {"logLevel": "INFO"}')
   values_amko=$(echo $values_amko | jq '.configs += {"logLevel": "INFO"}')
-  values_amko=$(echo $values_amko | jq '.configs += {"useCustomGlobalFqdn": false}')
+  values_amko=$(echo $values_amko | jq '.configs += {"useCustomGlobalFqdn": true}')
   # .gslbLeaderCredentials
   values_amko=$(echo $values_amko | jq '. += {"gslbLeaderCredentials": {"username": "admin"}}')
 #  values_amko=$(echo $values_amko | jq '.gslbLeaderCredentials += {"password": ""}') # to be replaced

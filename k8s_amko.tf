@@ -39,6 +39,16 @@ data "template_file" "crd_gslb" {
   }
 }
 
+data "template_file" "crd_gslbhostrule" {
+  count      = length(var.vmw.kubernetes.clusters)
+  template = file("templates/crd_gslbhostrule.yml.template")
+  vars = {
+    gslb_domain = var.vmw.kubernetes.amko.gslb_domain
+  }
+}
+
+
+
 data "template_file" "ingress_gslb" {
   count      = length(var.vmw.kubernetes.clusters)
   template = file("templates/ingress_gslb.yml.template")
@@ -107,6 +117,11 @@ resource "null_resource" "amko_prerequisites" {
     destination = "/home/ubuntu/crd_gslb.yml"
   }
 
+  provisioner "file" {
+    content = data.template_file.crd_gslbhostrule[count.index].rendered
+    destination = "/home/ubuntu/crd_gslbhostrule.yml"
+  }
+  
   provisioner "file" {
     content = data.template_file.ingress_gslb[count.index].rendered
     destination = "/home/ubuntu/ingress_gslb.yml"

@@ -1,0 +1,8 @@
+apiVersion: amko.vmware.com/v1alpha1
+kind: GSLBHostRule
+metadata:
+  name: gslb-host-rule-1
+  namespace: avi-system
+spec:
+  fqdn: ingress.${gslb_domain}
+  ttl: 0
