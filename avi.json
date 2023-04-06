@@ -841,16 +841,8 @@
                 {
                   "port": 53
                 }
-              ]
-            },
-            {
-            "name": "app-vmw-gslb",
-            "services" : [
-              {
-                "port": 53
-              }
-            ],
-            "se_group_ref": "seGroupGslb"
+              ],
+              "se_group_ref": "seGroupGslb"
             }
           ],
           "http": [
