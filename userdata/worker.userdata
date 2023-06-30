@@ -67,12 +67,19 @@ write_files:
       fi
       #
       #
+      apt remove containerd
+      apt update
+      apt install -y containerd.io
+      rm -fr /etc/containerd/config.toml
+      echo "version = 2" | tee /etc/containerd/config.toml
+      echo "[plugins.\"io.containerd.grpc.v1.cri\".containerd.runtimes.runc]" | tee -a /etc/containerd/config.toml
+      echo "  runtime_type = \"io.containerd.runc.v2\"" | tee -a /etc/containerd/config.toml
+      echo "  [plugins.\"io.containerd.grpc.v1.cri\".containerd.runtimes.runc.options]" | tee -a /etc/containerd/config.toml
+      echo "    SystemdCgroup = true" | tee -a /etc/containerd/config.toml
+      systemctl restart containerd
       #
-      #for image in $(cat cni.yml | grep 'image: ' | awk -F 'image: ' '{print $2}'); do docker pull $image ; done
-      #docker image pull avinetworks/ako:${akoVersion}
-      #cni=${cni}
-      #[ $cni == 'calico' ] && ( echo "CNI is Calico" ; docker pull calico/pod2daemon-flexvol:v3.17.2  ; docker pull calico/node:v3.17.2 ; docker pull calico/cni:v3.17.2 ; docker pull calico/kube-controllers:v3.17.2)
       echo "cloud init done" | tee /tmp/cloudInitDone.log
+      #
     path: /opt/bootstrap.sh
     permissions: 0755
 

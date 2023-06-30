@@ -36,7 +36,7 @@ variable "controller" {
     disk = 256
     cluster = true
     floating_ip = "10.41.134.130"
-    version = "22.1.3-9096"
+    version = "22.1.4-9196"
     wait_for_guest_net_timeout = 4
     private_key_path = "~/.ssh/cloudKey"
     dns =  ["10.23.108.1", "10.23.108.2"]
@@ -61,7 +61,7 @@ variable "jump" {
     private_key_path = "~/.ssh/cloudKey"
     wait_for_guest_net_timeout = 2
     template_name = "ubuntu-focal-20.04-cloudimg-template"
-    avisdkVersion = "22.1.3"
+    avisdkVersion = "22.1.4"
     username = "ubuntu"
   }
 }
@@ -77,7 +77,7 @@ variable "ansible" {
       ansible-core = "2.12.5"
     }
     k8sInstallUrl = "https://github.com/tacobayle/ansibleK8sInstall"
-    k8sInstallTag = "v1.66"
+    k8sInstallTag = "v1.7"
   }
 }
 
@@ -170,7 +170,7 @@ variable "vmw" {
           name = "cluster1" # cluster name
           netplanApply = true
           username = "ubuntu" # default username dor docker and to connect
-          version = "1.21.3-00" # k8s version
+          version = "1.26.6-00" # k8s version
           namespaces = [
             {
               name= "ns1"
@@ -184,7 +184,7 @@ variable "vmw" {
           ]
           ako = {
             namespace = "avi-system"
-            version = "1.7.2"
+            version = "1.10.1"
             helm = {
               url = "https://projects.registry.vmware.com/chartrepo/ako"
             }
@@ -209,9 +209,8 @@ variable "vmw" {
             pod = "192.168.0.0/16"
           }
           docker = {
-            version = "5:20.10.7~3-0~ubuntu-bionic"
+            version = "5:24.0.2-1~ubuntu.20.04~focal"
           }
-          interface = "ens224" # interface used by k8s
           cni = {
             url = "https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/tigera-operator.yaml"
             url_crd = "https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/custom-resources.yaml -O"
@@ -223,7 +222,7 @@ variable "vmw" {
             disk = 80
             network = "vxw-dvs-34-virtualwire-124-sid-1080123-sof2-01-vc08-avi-dev120"
             wait_for_guest_net_routable = "false"
-            template_name = "ubuntu-bionic-18.04-cloudimg-template"
+            template_name = "ubuntu-focal-20.04-cloudimg-template"
             netplanFile = "/etc/netplan/50-cloud-init.yaml"
           }
           worker = {
@@ -232,7 +231,7 @@ variable "vmw" {
             disk = 40
             network = "vxw-dvs-34-virtualwire-124-sid-1080123-sof2-01-vc08-avi-dev120"
             wait_for_guest_net_routable = "false"
-            template_name = "ubuntu-bionic-18.04-cloudimg-template"
+            template_name = "ubuntu-focal-20.04-cloudimg-template"
             netplanFile = "/etc/netplan/50-cloud-init.yaml"
           }
         },
@@ -240,7 +239,7 @@ variable "vmw" {
           name = "cluster2"
           netplanApply = true
           username = "ubuntu"
-          version = "1.21.3-00"
+          version = "1.26.6-00"
           namespaces = [
             {
               name= "ns1"
@@ -254,7 +253,7 @@ variable "vmw" {
           ]
           ako = {
             namespace = "avi-system"
-            version = "1.7.2"
+            version = "1.10.1"
             helm = {
               url = "https://projects.registry.vmware.com/chartrepo/ako"
             }
@@ -288,9 +287,8 @@ variable "vmw" {
             pod = "192.168.1.0/16"
           }
           docker = {
-            version = "5:20.10.7~3-0~ubuntu-bionic"
+            version = "5:24.0.2-1~ubuntu.20.04~focal"
           }
-          interface = "ens224"
           cni = {
             url = "https://github.com/vmware-tanzu/antrea/releases/download/v1.2.3/antrea.yml"
             name = "antrea"
@@ -303,7 +301,7 @@ variable "vmw" {
             disk = 80
             network = "vxw-dvs-34-virtualwire-124-sid-1080123-sof2-01-vc08-avi-dev120"
             wait_for_guest_net_routable = "false"
-            template_name = "ubuntu-bionic-18.04-cloudimg-template"
+            template_name = "ubuntu-focal-20.04-cloudimg-template"
             netplanFile = "/etc/netplan/50-cloud-init.yaml"
           }
           worker = {
@@ -312,7 +310,7 @@ variable "vmw" {
             disk = 40
             network = "vxw-dvs-34-virtualwire-124-sid-1080123-sof2-01-vc08-avi-dev120"
             wait_for_guest_net_routable = "false"
-            template_name = "ubuntu-bionic-18.04-cloudimg-template"
+            template_name = "ubuntu-focal-20.04-cloudimg-template"
             netplanFile = "/etc/netplan/50-cloud-init.yaml"
           }
         },

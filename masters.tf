@@ -41,10 +41,12 @@ resource "vsphere_virtual_machine" "master" {
 
   network_interface {
     network_id = data.vsphere_network.networkMgt.id
+    ovf_mapping = "ens192"
   }
 
   network_interface {
     network_id = data.vsphere_network.networkMaster[count.index].id
+    ovf_mapping = "ens224"
   }
 
 

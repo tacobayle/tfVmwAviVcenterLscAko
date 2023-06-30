@@ -31,10 +31,12 @@ resource "vsphere_virtual_machine" "worker" {
 
   network_interface {
     network_id = data.vsphere_network.networkMgt.id
+    ovf_mapping = "ens192"
   }
 
   network_interface {
     network_id = data.vsphere_network.networkWorker[count.index].id
+    ovf_mapping = "ens224"
   }
 
   num_cpus = var.vmw.kubernetes.clusters[floor(count.index / var.vmw.kubernetes.workers.count)].worker.cpu
